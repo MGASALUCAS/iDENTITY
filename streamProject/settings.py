@@ -127,5 +127,6 @@ MEDIA_URL = '/streamApp/images/test/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
 # Activate Django - heroku
 django_heroku.settings(locals())
