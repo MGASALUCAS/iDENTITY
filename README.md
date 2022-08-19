@@ -2,4 +2,4 @@
 A FACE-RECOGNITION SOFTWARE FOR ATTENDANCING AND SECURITY SURVEILLANCE.
 
 
-# Get it here:  identity01.herokuapp.com
+# Get it here:  https://identity01.herokuapp.com
