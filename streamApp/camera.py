@@ -55,8 +55,8 @@ def predict(img, knn_clf=None, model_path=None, distance_threshold=0.4):
 
 print("\n Looking for faces via webcam...")
 
-# video_capture = cv2.VideoCapture("http://10.184.239.116:8080/video")
-video_capture = cv2.VideoCapture(0)
+video_capture = cv2.VideoCapture("http://192.168.9.142:8080/video")
+# video_capture = cv2.VideoCapture(0)
 
 
 # time.sleep(2.0)
