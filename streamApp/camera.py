@@ -10,7 +10,6 @@ import face_recognition
 from flask import Flask, render_template, Response
 
 # Create a db
-# conn = sqlite3.connect('employee.db')
 conn = sqlite3.connect('registered.db')
 c = conn.cursor()
 # Create a table in the db
@@ -91,9 +90,11 @@ def gen_frames():
                 tim = str(k.hour) + ':' + str(k.minute) + ':' + str(k.second)
                 dat = str(k.day) + '-' + str(k.month) + '-' + str(k.year)
                 ff = 'Present'
+
                 # Connect to the database
-                conn = sqlite3.connect('employee.db')
+                conn = sqlite3.connect('registered.db')
                 c = conn.cursor()
+
                 # Insert a row of data
                 c.execute("INSERT INTO attendancee VALUES (?,?,?,?)", (dat, name, ff, tim))
                 conn.commit()
@@ -108,6 +109,7 @@ def gen_frames():
                 voices = engine.getProperty('voices')
                 engine.setProperty('voice', voices[1].id)
                 engine.setProperty('rate', 150)
+
                 # engine.say("A person is recognized.")
                 engine.runAndWait()
 
@@ -124,7 +126,7 @@ def gen_frames():
 
         # if cv2.waitKey(1) & 0xFF == ord('q'):
         #     break
-        #
+
         # # Release handle to the webcam
         # video_capture.release()
         # cv2.destroyAllWindows()
@@ -152,6 +154,8 @@ def index():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
 
 # ***********************************************************************************************************************
 
@@ -243,12 +247,14 @@ if __name__ == '__main__':
 #         # Print results on the console
 #         for name, (top, right, bottom, left) in predictions:
 #             cv2.rectangle(frame, (left, top), (right, bottom), (0, 255, 0), 3)
-#
+
+
 #             # Draw a label with a name below the face
 #             cv2.rectangle(frame, (left, bottom - 35), (right, bottom), (0, 0, 255), cv2.FILLED)
 #             font = cv2.FONT_HERSHEY_DUPLEX
 #             cv2.putText(frame, name, (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
-#
+
+
 #             # if match occurs save employee image and write in database
 #             if name != "unknown" and name != name_exists:
 #                 face_image = frame[top:bottom, left:right]
@@ -256,9 +262,11 @@ if __name__ == '__main__':
 #                 path = " "
 #                 cv2.imwrite(os.path.join(path, name + '.jpg'), face_image)
 #                 print("- Found {} at ({}, {})".format(name, left, top))
-#
+
+
 #                 k = datetime.datetime.now()
-#
+
+
 #                 tim = str(k.hour) + ':' + str(k.minute) + ':' + str(k.second)
 #                 dat = str(k.day) + '-' + str(k.month) + '-' + str(k.year)
 #                 ff = 'Present'
@@ -270,7 +278,8 @@ if __name__ == '__main__':
 #                 conn.commit()
 #                 conn.close()
 #                 print('Attendance marked')
-#
+
+
 #                 # Voice Analysis part.
 #                 engine = pyttsx3.init()
 #                 voices = engine.getProperty('voices')
@@ -278,39 +287,43 @@ if __name__ == '__main__':
 #                 engine.setProperty('rate', 150)
 #                 engine.say("Unknown person has recognized")
 #                 engine.runAndWait()
-#
+
+
 #                 name_exists = name
 #                 # markAttendance(name)
-#
+
+
 #         cv2.imshow('Video', frame)
 #
 #         # if cv2.waitKey(1) & 0xFF == ord('q'):
 #         #     break
-#         #
+
+
 #         # # Release handle to the webcam
 #         # video_capture.release()
 #         # cv2.destroyAllWindows()
-#
+
+
 #         ret, buffer = cv2.imencode('.jpg', frame)
 #         img = buffer.tobytes()
 #         yield (b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + img + b'\r\n')  # concat frame one by one and
 #         # show result
-#
-#
+
+
 # app = Flask(__name__)
-#
-#
+
+
 # @app.route('/video_feed')
 # def video_feed():
 #     # Video streaming route. Put this in the src attribute of an img tag
 #     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
-#
-#
+
+
 # @app.route('/')
 # def index():
 #     # """Video streaming home page."""
 #     return render_template('index.html')
-#
-#
+
+
 # if __name__ == '__main__':
 #     app.run(debug=True)
