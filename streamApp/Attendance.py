@@ -87,7 +87,7 @@ while True:
             dat = str(k.day) + '-' + str(k.month) + '-' + str(k.year)
             ff = 'Present'
             # Connect to the database
-            conn = sqlite3.connect('employee.db')
+            conn = sqlite3.connect('registered.db')
             c = conn.cursor()
             # Insert a row of data
             c.execute("INSERT INTO attendancee VALUES (?,?,?,?)", (dat, name, ff, tim))
