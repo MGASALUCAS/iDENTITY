@@ -19,7 +19,7 @@ from django.urls import path
 from django.urls import include  # new
 
 from django.urls import path, include
-from products import views
+from streamApp import views
 from django.conf.urls.static import static
 from django.conf import settings
 
