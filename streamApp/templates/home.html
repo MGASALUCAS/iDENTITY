@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Face Recognition</title>
+</head>
+<body>
+<div>
+    <h1>Face Recognition</h1>
+    <p>Recognizing faces in real-time using face recognition.</p>
+    <img id="stream" width="640" height="480" src="{{ url_for('video_feed') }}" alt="video streaming">
+</div>
+
+<script type="text/javascript">
+    // Load the video stream
+    function loadVideoStream() {
+        var video = document.getElementById('stream');
+        var url = window.location.href + 'video_feed';
+        video.src = url;
+        video.play();
+    }
+
+    window.onload = loadVideoStream;
+</script>
+</body>
+</html>

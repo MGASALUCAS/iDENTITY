@@ -1,3 +1,4 @@
+# importing libraries and packages.
 import datetime
 import os
 import os.path
@@ -9,7 +10,7 @@ import cv2
 import face_recognition
 from flask import Flask, render_template, Response
 
-# Create a db
+# Create a database.
 conn = sqlite3.connect('registered.db')
 c = conn.cursor()
 # Create a table in the db
@@ -54,7 +55,9 @@ def predict(img, knn_clf=None, model_path=None, distance_threshold=0.4):
 
 print("\n Looking for faces via webcam...")
 
-video_capture = cv2.VideoCapture("https://192.168.1.104:8080/video")
+video_capture = cv2.VideoCapture("https://10.131.237.17:8080/video")
+# video_capture = cv2.VideoCapture(0)
+
 
 
 # video_capture = cv2.VideoCapture(0)
@@ -151,7 +154,7 @@ def video_feed():
 @app.route('/')
 def index():
     # """Video streaming home page."""
-    return render_template('index.html')
+    return render_template('home.html')
 
 
 if __name__ == '__main__':
