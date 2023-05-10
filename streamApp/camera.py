@@ -353,11 +353,9 @@ import face_recognition
 from flask import Flask, render_template, Response
 
 # Import from external Loading.
-from prediction import *
-from videocapturing import *
-from database import *
-
-
+from streamApp.prediction import predict, knn_clf, name_exists
+from streamApp.videocapturing import *
+from streamApp.database import *
 
 
 print("\n Looking for faces via webcam...")
