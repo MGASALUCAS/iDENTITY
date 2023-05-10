@@ -9,35 +9,10 @@ import importlib
 
 
 # Create your views here.
-def index(request):
-    # importlib.import_module('hello')
-    # exec(open('camera.py').read())
-    # import runpy
-    # runpy.run_path(path_name='camera.py')
-    importlib.reload(camera)
-    if True:
-        # cv2.imshow('Video', frame)
-        # ret, buffer = cv2.imencode('.jpg', frame)
-        # img = buffer.tobytes()
-        # yield (b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + img + b'\r\n')  # concat frame one by one and
-        # # show result
-
-        # app = Flask(__name__)
-        #
-        # @app.route('/video_feed')
-        # def video_feed():
-        #     # Video streaming route. Put this in the src attribute of an img tag
-        #     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
-        #
-        # @app.route('/')
-        # def index():
-        #     # """Video streaming home page."""
-        #     return render_template('index.html')
-        #
-        # if __name__ == '__main__':
-        #     app.run(debug=True)
-
-        return render(request, 'index.html')
+def index(request):  
+      importlib.reload(camera)
+      while True:
+            return render(request, 'index.html')
 
 
 def home(request):
@@ -54,3 +29,9 @@ def gen(camera):
 def video_stream(request):
     return StreamingHttpResponse(gen_frames(),
                                  content_type='multipart/x-mixed-replace; boundary=frame')
+
+def records(request):
+    return render(request, 'charts/index.html')
+
+def tables(request):
+    return render(request, 'charts/tables.html')

@@ -351,34 +351,17 @@ import pyttsx3
 import cv2
 import face_recognition
 from flask import Flask, render_template, Response
-from prediction import predict
+
+# Import from external Loading.
+from prediction import *
+from videocapturing import *
+from database import *
 
 
-# Create a database.
-conn = sqlite3.connect('registered.db')
-c = conn.cursor()
-# Create a table in the db
-c.execute(
-    '''CREATE TABLE IF NOT EXISTS attendancee (Date text, student_name text, attendance text, arrival_time text)''')
-
-sql1 = 'DELETE FROM attendancee'
-c.execute(sql1)
-
-conn.commit()
-conn.close()
 
 
 print("\n Looking for faces via webcam...")
 
-# Set the desired frame size
-frame_width = 1280
-frame_height = 720
-
-# Open the camera capture device and set the frame size
-cap = cv2.VideoCapture(0)
-# cap = cv2.VideoCapture("rtsp://admin:mgasa1234!.@192.168.1.108/cam/realmonitor?channel=1&subtype=0")
-cap.set(cv2.CAP_PROP_FRAME_WIDTH, frame_width)
-cap.set(cv2.CAP_PROP_FRAME_HEIGHT, frame_height)
 
 # video_capture = cv2.VideoCapture(0)
 
@@ -397,9 +380,6 @@ def gen_frames():
 
         # Using the trained classifier, make predictions for unknown images.
 
-        knn_clf = pickle.load(open("trained_model.clf", 'rb'))
-
-        name_exists = 'unjhuhhb'
 
         predictions = predict(frame, knn_clf=knn_clf)
 

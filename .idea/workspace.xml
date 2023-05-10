@@ -6,9 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="b004b51f-c4ba-4f36-bdc2-2089b9845dc9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/streamApp/Attendance.py" beforeDir="false" afterPath="$PROJECT_DIR$/streamApp/Attendance.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registered.db" beforeDir="false" afterPath="$PROJECT_DIR$/registered.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/streamApp/camera.py" beforeDir="false" afterPath="$PROJECT_DIR$/streamApp/camera.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/streamApp/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/streamApp/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/streamApp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/streamApp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/streamApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/streamApp/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,12 +34,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="C:/Users/MGASATECH/Desktop/storefront/Python" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\User Files\Desktop\DJANGO WORKS\storefront\streamProject\streamApp\images\test" />
