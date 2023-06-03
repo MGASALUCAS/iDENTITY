@@ -354,14 +354,13 @@ from flask import Flask, render_template, Response
 
 # Import from external Loading.
 from streamApp.prediction import predict, knn_clf, name_exists
-from streamApp.videocapturing import *
+from streamApp.videocapturing import capture_video
 from streamApp.database import *
 
 
 print("\n Looking for faces via webcam...")
 
 
-# video_capture = cv2.VideoCapture(0)
 
 app = Flask(__name__)
 
@@ -370,14 +369,17 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/video_feed')
 def gen_frames():
     while True:
-        # video_capture = cv2.VideoCapture("rtsp://admin:mgasa1234!.@192.168.1.108/cam/realmonitor?channel=1&subtype=0")
-        # video_capture = cv2.VideoCapture(0)
-        ret, frame = cap.read()
+        # cap = cv2.VideoCapture("rtsp://admin:mgasa1234!.@192.168.1.108/cam/realmonitor?channel=1&subtype=0")
+        # cap = cv2.VideoCapture('http://10.132.86.79:8080/video')
+        # cap = cv2.VideoCapture(0)
+
+        # ret, frame = cap.read()
 
         # Using the trained classifier, make predictions for unknown images.
-
+        ret, frame = capture_video()
 
         predictions = predict(frame, knn_clf=knn_clf)
 
@@ -460,10 +462,11 @@ def gen_frames():
                 voices = engine.getProperty('voices')
                 engine.setProperty('voice', voices[1].id)
                 engine.setProperty('rate', 150)
+                time.delay(60)
                 engine.say("WANTED! WANTED! WANTED! WANTED! person has recognized")
                 engine.runAndWait()
 
-        cv2.imshow('Video', frame)
+        # cv2.imshow('Video', frame)
 
         # if cv2.waitKey(1) & 0xFF == ord('q'):
         #     break
@@ -476,15 +479,16 @@ def gen_frames():
         img = buffer.tobytes()
         yield (b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + img + b'\r\n')  # concat frame one by one and
         # show result
+    return Response(mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
 app = Flask(__name__)
 
 
-@app.route('/video_feed')
-def video_feed():
-    # Video streaming route. Put this in the src attribute of an img tag
-    return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
+# @app.route('/video_feed')
+# def video_feed():
+#     # Video streaming route. Put this in the src attribute of an img tag
+#     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
 
