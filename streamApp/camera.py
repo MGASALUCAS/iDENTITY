@@ -372,14 +372,16 @@ def index():
 @app.route('/video_feed')
 def gen_frames():
     while True:
-        # cap = cv2.VideoCapture("rtsp://admin:mgasa1234!.@192.168.1.108/cam/realmonitor?channel=1&subtype=0")
-        # cap = cv2.VideoCapture('http://10.132.86.79:8080/video')
+        cap = cv2.VideoCapture("rtsp://admin:admin123@192.168.1.122/cam/realmonitor?channel=1&subtype=0")
+        # cap = cv2.VideoCapture('http://10.185.1.121:8080/video')
+        # cap = cv2.VideoCapture('http://192.168.43.1:8080/video')
+
         # cap = cv2.VideoCapture(0)
 
-        # ret, frame = cap.read()
+        ret, frame = cap.read()
 
         # Using the trained classifier, make predictions for unknown images.
-        ret, frame = capture_video()
+        # ret, frame = capture_video()
 
         predictions = predict(frame, knn_clf=knn_clf)
 
